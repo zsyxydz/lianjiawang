@@ -1,0 +1,278 @@
+html,body,div,ul,li,img,a,span,p{
+	margin:0;
+	padding:0;
+}
+html,body{
+	font-size: 62.5%;
+	line-height: 1;
+	font-family: "微软雅黑";
+	color:#333;
+}
+a{
+	color: #333;
+}
+.clearfix::after{
+	display: block;
+	height:0;
+	content: "";
+	clear:both;
+}
+.header{
+	width:100%;
+	height:4.125rem;
+	border-bottom: 1px solid #e5e5e5;
+	position: relative;
+}
+.left{
+	position: absolute;
+	top:0;
+	left:0;
+	height:4.125rem;
+	line-height: 5.125rem;
+	float: left;
+	margin-right: 10%;
+	margin-left: 1.5rem;
+}
+.angle_left{
+	color:#00ae66;
+	font-size: 3.4rem;
+	margin-right: 1rem;
+}
+.Place_btn{
+	font-size: .8125rem;
+	text-decoration: none;
+	color:#333;
+	line-height: 3.125rem;
+	vertical-align: 0.5rem;
+}
+.center{
+	position: absolute;
+	top:3%;
+	left:37%;
+	text-decoration: none;
+	display: block;
+	height:4.125rem;
+	float: left;
+	padding:0 1rem;
+	text-align: center;
+	margin-right: 6rem;
+}
+.logo{
+	display: block;
+	width:5.5rem;
+	height:4.125rem;
+	background-size: 5.5rem;
+	background-position: -4px -13.7125rem;
+	background-image: url(../images/logo.svg);
+}
+.right{
+	position: absolute;
+	top:3%;
+	left:85%;
+	display: block;
+	text-align:right;
+	width:2.5rem;
+	height:4.125rem;
+	float: left;
+	line-height: 4.125rem;
+	color:#00ae66;
+	font-size:2.4rem; 
+}
+.house{
+	/*position: relative;*/
+	padding:1rem 1rem 1rem 0;
+	border-bottom: 1px solid #ddd;
+}
+.house_c{
+	position: relative;
+	display: block;
+	/*height: 6rem;*/
+
+}
+.house > div{
+	display: inline-block;
+}
+.housePic{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10rem;
+	height: 6rem;
+}
+.housePic img{
+	width: 100%;
+	height: 100%
+}
+.houseIntroduce{
+	margin-left: 11rem;
+}
+.houseIntroduce > p{
+	margin-bottom: .5rem;
+}
+.houseIntroduce p:nth-of-type(1){
+	font-size: 1.5rem;
+	margin-right: 2rem;
+}
+.houseIntroduce p:nth-of-type(2){
+	font-size: 1.2rem;
+	color:#8b8b8b;
+	width: 13rem;
+	overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}
+.houseIntroduce p:nth-of-type(3) em{
+	margin-right: 10px;
+	color: red;
+}
+.houseIntroduce p:nth-of-type(4) span:nth-of-type(1){
+	color:rgb(89,171,253);
+	background-color:rgba(89,171,253,0.15);
+	/*background: #9c9fa1;*/
+	display: inline-block;
+	padding:0.5px 3px;
+	margin: 0 2px;
+}
+.houseIntroduce p:nth-of-type(4) span:nth-of-type(2){
+	color:rgb(242,161,47);
+	background-color:rgba(242,161,47,0.15);
+	/*background: #9c9fa1;*/
+	display: inline-block;
+	padding:0.5px 3px;
+	margin: 0 2px;
+}
+.search_box{
+	position: relative;
+	height:3.125rem;
+	line-height: 3.125rem;
+	background:#f9f9f9;
+	padding:0.625rem;
+	border:none;
+	border-bottom: 1px solid #e5e5e5;
+}
+.input{
+	padding-left: 2.125rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    background: #e8e8e9;
+    font-size: .75rem;
+    margin-right: .125rem;
+    border: 0;
+    vertical-align: top;
+    width:92%;
+}
+.fa-search{
+	position: absolute;
+	left:14px;
+	top:15px;
+	color:#ccc;
+	font-size: 1.6rem;
+}
+.list{
+	border-bottom: 1px solid #ccc;
+	height: 3.5rem;
+    line-height: 3.5rem;
+    background-color: #fff;
+}
+.list li{
+	list-style: none;
+	float: left;
+	width:25%;
+	text-align: center;
+	font-size: 1.35rem;
+	color:#adadad;
+}
+.list i{
+	vertical-align: 0.2rem;
+}
+.recommend{
+	margin-top: 24px;
+	padding-left: 20px;
+	background: #fff;
+}
+.bottom{
+	margin-top: 1rem;
+	padding:0 1rem;
+	background: #2f3130;
+	color:#727373;
+}
+.bottomHead{
+	line-height: 3rem;
+	border-bottom: 1px solid #3e403f;
+	font-size: 12px;
+}
+.bottomContent{
+	padding:1rem 0 0;
+}
+.bottomContent > p > span{
+	width: 45%;
+	margin:0 2.5%;
+	display: inline-block;
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	padding:3px 0;
+}
+.bottomContent ul{
+	padding:1rem 0;
+}
+.bottomContent ul li{
+	list-style: disc;
+	width: 30%;
+	display: inline-block;
+	text-align: center;
+	line-height: 2rem;
+}
+.bottomfoot p{
+	text-align: right;
+	line-height: 1.5rem;
+}
+.app{
+	width:100%;
+	background: rgba(0,0,0,.68);
+	color:#fff;
+	/*margin:1rem;
+	padding:1rem;*/
+	/*border-radius: 1rem;*/
+	/*box-shadow: 0 5px 10px rgba(0,0,0,.15);*/
+	/*background:#fff;*/
+	position: fixed;
+	right:0;
+	bottom: 0;
+}
+.appBox{
+	position: relative;
+}
+.appIcon,.appWord{
+	float: left;
+}
+.appIcon{
+	margin-top: 1rem;
+	margin-left: 2rem;
+}
+.appIcon img{
+	width: 30px;
+	height:30px;
+}
+.appWord{
+	padding:1rem 2rem;
+}
+.appWord p:nth-of-type(1){
+	line-height: 1rem;
+	margin-top: .125rem;
+}
+.appWord p:nth-of-type(2){
+	line-height: 1rem;
+	margin-top: .56rem;
+}
+.appDown{
+	line-height: 50px;
+	width: 10rem;
+	height:100%;
+	background-color: #00ae66;
+	color: #fff;
+	text-align: center;
+	font-size: 1.8rem;
+	position: absolute;
+	top: 22%;
+	right: 0;
+	margin-top: -1rem;
+}

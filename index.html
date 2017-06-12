@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link  href="./css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="index">
+	<div class="app">
+		<div class="appBox clearfix">
+			<div class="appIcon"><img src="./images/111.png"></div>
+			<div class="appWord">
+				<p>下载链家App</p>
+				<p>即享个性化房源推荐</p>
+			</div>
+			<div class="appDown">立即下载</div>
+		</div>
+	</div>
+	<div class="header">
+		<div class="headerAdvertise" @click="city">{{citty}}</div>
+		<div class="headerMine"><i class="fa fa-search"></i></div>
+		<div class="word"></div>
+		<div class="headSearch"><i class="fa fa-search"></i><input placeholder="输入小区或商圈开始找房咯~"></div>
+	</div>
+	<div class="classification clearfix">
+		<ul>
+			<li class="everyClass clearfix" v-for="item in logo" @click="inclick(item)">
+				<div><i class="fa" :class=item.icon></i></div>
+				<p>{{item.name}}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="banner">
+		<img :src="img.middle_img">
+	</div>
+	<div class="tool">
+		<h1>常用工具</h1>
+		<ul>
+			<li class="everyTool">
+				<div><i class="fa fa-rocket fa-5x"></i></div>
+				<p>问答</p>
+			</li>
+			<li class="everyTool">
+				<div><i class="fa fa-search fa-5x"></i></div>
+				<p>百科</p>
+			</li>
+			<li class="everyTool">
+				<div><i class="fa fa-life-ring fa-5x"></i></div>
+				<p>智能找房</p>
+			</li>
+			<li class="everyTool">
+				<div><i class="fa fa-magic fa-5x"></i></div>
+				<p>去估计</p>
+			</li>
+			<li class="everyTool">
+				<div><i class="fa fa-hourglass-end fa-5x"></i></div>
+				<p>找经纪人</p>
+			</li>
+			<li class="everyTool">
+				<div><i class="fa fa-legal fa-5x"></i></div>
+				<p>客服电话</p>
+			</li>
+		</ul>
+	</div>
+	<div class="recommend">
+		<h1>推荐房源</h1>
+		<div class="house clearfix" v-for="item in list" @click="every">
+			<a :href="'details.html?id='+item.id" class="house_c">
+			<div class="housePic"><img src="./images/113.jpg"></div>
+			<div class="houseIntroduce">
+				<p>{{item.title}}</p>
+				<p>{{item.content}}</p>
+				<p><em>{{item.price}}</em><span>{{item.unit_pric}}</span></p>
+				<p><span>地铁</span><span>满五年</span></p>
+			</div>
+			</a>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="bottomHead">北京手机链家网</div>
+		<div class="bottomContent">
+			<p><span>链接分站</span><span>热门城市</span></p>
+			<ul>
+				<li>北京链家</li>
+				<li>成都链家</li>
+				<li>上海链家</li>
+				<li>天津链家</li>
+				<li>青海链家</li>
+				<li>杭州链家</li>
+				<li>青岛链家</li>
+				<li>济南链家</li>
+				<li>广州链家</li>
+			</ul>
+		</div>
+		<div class="bottomfoot">
+			<p>北京链家房地产经纪有限公司</p>
+			<p>网络经营许可证 京ICP备11024601号-12</p>
+		</div>
+	</div>
+	<div class="chooseCity">
+		<div class="choose clearfix" ><i class="fa fa-search">返回</i>选择城市</div>
+		<p class="thiscity">当前城市</p>
+		<div class="thisCity">北京</div>
+		<p class="allCity">所有城市</p>
+		<div class="city">
+			<ul>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+				<li>北京</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var vm = new Vue({
+    	el:".index",
+    	data:{
+    		phone:"",
+    		name:"",
+    		password:"",
+    		list:[],
+    		logo:[],
+    		img:"",
+    		img2:"",
+    		img3:"",
+    		citty:"",
+    		switchs:false
+    	},
+    	methods:{
+    		every:function(){
+				location.href="details.html"
+    		},
+    		city:function(){
+				location.href="city.html"
+    		},
+    		request:function(index){
+    			var user_id=localStorage.getItem("user_id")
+    			this.citty=localStorage.getItem("name")
+    			console.log(this.citty)
+    			$.ajax({
+					url:"http://118.89.169.233/lianjia/index.php",
+					data:{
+						user_id:user_id,
+					},
+					type:"post",
+					dataType:"json",
+					success:function(res){
+							console.log(res);
+							this.list=res.houses
+							this.logo=res.icon
+							this.img=res.picture
+					}.bind(this)
+				})
+			},
+			inclick:function(item){
+				var icon_id=item.id
+				console.log(icon_id)
+				if (icon_id==1) {
+					location.href="TheSecondary.html?id="+icon_id
+				}else if(icon_id==2){
+					location.href="lianjia.html?id="+icon_id
+				}else if(icon_id==3){
+					location.href="TheSecondary.html?id="+icon_id
+				}
+			}
+    	},
+    	mounted(){
+    		this.request()
+    	}
+    })
+</script>
+</body>
+	
+</html>

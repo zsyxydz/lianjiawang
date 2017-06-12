@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+<style>
+		html,body,input,p,ul,li,h6{
+	padding:0;
+	margin:0;
+}
+html body{
+	background:#e8e8e9;
+}
+.clearfix::after{
+	display: block;
+	height: 0;
+	content: "";
+	clear: both;
+}
+a{
+	text-decoration: none;	
+}
+.header{
+	position: relative;
+	height: 2rem;
+	line-height: 1rem;
+	padding-top:1rem; 
+	text-align: center;
+	background-color: #fff;
+}
+.header a{
+	color:#222;
+}
+.left{
+	position: absolute;
+	top:0.4rem;
+	left: 1rem;
+	font-size: 2rem;
+}
+.back{
+	position: absolute;
+	top:0.85rem;
+	left: 2.5rem;
+}
+h6{
+	margin-left:1rem; 
+	font-weight: 400;
+    font-size: .8rem;
+    color: #626262;
+	padding:0.5rem 0;
+}
+.middle_box ul li{
+	width: 96%;
+	list-style: none;
+	padding:0.5rem 0 0.5rem 1rem;
+	background:#fff;
+	border-bottom: 0.05rem solid #e8e8e9;
+}
+.middle_box a{
+	color: #333;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<a href="index.html">
+				<i class="fa fa-angle-left left"></i>
+				<p class="back">返回</p>
+			</a>
+			<p>选择城市</p>	
+		</div>
+		<h6>当前城市</h6>
+		<div class="middle_box">
+			<ul>
+				<li>{{now_city}}</li>
+			</ul>
+		</div>
+		<h6>所有城市</h6>
+		<div class="middle_box">
+			<ul>
+				<li v-for="item in list" @click="chose(item)">{{item.name}}</li>
+			</ul>
+		</div>
+	</div>
+</body>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script type="text/javascript">
+	      var vm = new Vue({
+	      	el:".wrap",
+	      	data:{
+	      		id:"",
+	      		name:"",
+                list:[],
+                now_city:""
+	      	},
+	      	mounted:function(){
+	      		this.city();
+	      	},
+	      	methods:{
+	      		chose:function(item){
+                    this.now_city = item.name;
+                    localStorage.setItem("id",item.id);
+                     localStorage.setItem("name",item.name);
+                    window.location.href="index.html"
+	      		},
+	             city:function(){
+	             $.ajax({
+	                url:"http://118.89.169.233/lianjia/index.php",
+	                dataType:"json",
+	                data:{
+	                    // "user_id":user_id
+	                },
+	                type:"post",
+	                success:function(res){
+	                	console.log(res)
+	                     this.list=res.city;
+	                     var num = localStorage.getItem("id");
+	                     this.now_city=this.list[num-1].name;
+	                }.bind(this)
+	                 })
+	             }
+	      	}
+	})
+	</script>	
+</html>

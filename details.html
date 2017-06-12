@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<title>详情</title>
+	<link rel="stylesheet" type="text/css" href="./css/details.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/swiper.min.css">
+</head>
+<body>
+</head>
+<body>
+    <div class="all">
+    	<div class="header clearfix">
+			<div class="left">
+				<i class="fa fa-angle-left angle_left"></i>
+				<a href="" class="Place_btn">北京 <i class="fa fa-angle-down angle_down"></i></a>
+			</div>
+			<a href="" class="center">
+				<span class="logo"></span>
+			</a>
+			<a href="" class="right">
+				<i class="fa fa-user"></i>
+			</a>
+		</div>
+		<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide" v-for="imgItem in list.images"><img :src="imgItem.image"></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <!-- <div class="swiper-pagination"></div> -->
+	        <!-- Add Arrows -->
+	        <div class="swiper-button-next"></div>
+	        <div class="swiper-button-prev"></div>
+	    </div>
+	    <div class="content">
+			<h3>{{list.title}}</h3>
+			<div class="sale clearfix"><div class="sale1"><span class="sale_money">售价</span></br></br><span class="sale_money1">{{list.house_sale}}</span></div><div class="sale2"><span class="sale_money">房型</span></br></br><span class="sale_money1">{{list.house_type}}</span></div><div class="sale3"><span class="sale_money">建筑面积</span></br></br><span class="sale_money1">{{list.house_measure}}</span></div></div>
+			<p class="download"><img src="./images/logo300x300.png"><span>下载链家App，在线咨询经纪人</span></p>
+			<div class="metro"><span>地铁</span><span>满五年</span><span>临时看房</span><span>看房源</span></div>
+			<div class="refer clearfix">
+				<ul class="clearfix">
+					<li><span>单价:</span><span>{{list.unit_price}}</span></li>
+					<li><span>挂牌:</span><span>{{list.quarters}}</span></li>
+					<li><span>朝向:</span><span>{{list.direction}}</span></li>
+					<li><span>楼层:</span><span>{{list.floor}}</span></li>
+					<li><span>楼型:</span><span>{{list.floor_type}}</span></li>
+					<li><span>电梯:</span><span>{{list.renovation}}</span></li>
+					<li><span>装修:</span><span>38.580万/平</span></li>
+					<li><span>预算首付:</span><span>首付及贷款情况请咨询经纪人</span></li>
+					<li><span>年代:</span><span>38.580万/平</span></li>	
+					<li><span>用途:</span><span>{{list.ownership}}</span></li>	
+					<li><span>权属:</span><span>{{list.purpose}}</span></li>	
+				</ul>
+			</div>
+			<!--户型分间-->
+			<div class="house_type clearfix">
+				<div class="type">
+					<h2>户型分间</h2>
+					<p>卧室A: 13.4㎡/ 南/ 普通窗</p>
+					<p>卧室C: 10.1㎡/ 南/ 普通窗</p>
+					<p>阳台A: 4.7㎡/ 南/ 普通窗</p>
+				</div>
+				<img src="./images/house_one.jpg">
+			</div>
+			<!--更多信息-->
+			<div class="more">更多房源信息</div>
+			<div class="map"></div>
+			<div class="introduce">
+				<h1>房源介绍</h1>
+				<p>{{list.housing_introduction}}</p>
+            </div>
+		</div>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script type="text/javascript">
+	    var vm = new Vue({
+	    	el:".all",
+	    	data:{
+	    		list:""
+	    	},
+	    	methods:{
+	    		getQueryStr:function(key) {
+				    var queryString = location.search.match(new RegExp("[\?\&]" + key + "=([^\&]*)(\&?)", "i")),
+				        val = (queryString && queryString.length > 1 && queryString[1]) || "";
+				    return decodeURIComponent(val);
+				},
+	    		request:function(index){
+    				var id = this.getQueryStr("id");
+    				// console.log(user_id)	
+	    			$.ajax({
+						url:"http://118.89.169.233/lianjia/index.php",
+						data:{
+							house_id:id
+						},
+						type:"post",
+						dataType:"json",
+						success:function(res){
+							console.log(res);
+							this.list=res
+							console.log(this.list)
+							// location.href="login.html"
+						}.bind(this)
+					})
+				},
+		    },
+	    	mounted(){
+	    		this.request();
+	    	}
+	    })
+	    	
+		     var mySwiper = new Swiper ('.swiper-container', {
+			     	nextButton: '.swiper-button-next',
+			        prevButton: '.swiper-button-prev',
+			        // pagination: '.swiper-pagination',
+			        autoplay: 1000,
+			        loop: true,
+			        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+			 }) 
+    </script>
+</body>
+</html>

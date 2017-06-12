@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/Administrator/Desktop/html5/lianjia/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>首页</title>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="./首页_files/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./首页_files/index.css">
+	<script type="text/javascript" src="./首页_files/jquery.js.下载"></script>
+	<script src="./首页_files/vue.js.下载"></script>
+</head>
+<body>
+<div class="index"><div class="app"><div class="appBox clearfix"><div class="appIcon"><img src="./首页_files/111.png"></div> <div class="appWord"><p>下载链家App</p> <p>即享个性化房源推荐</p></div> <div class="appDown">即可下载</div></div></div> <div class="header"><div class="headerAdvertise">北京</div> <div class="headerMine"><i class="fa fa-search"></i></div> <div class="word"></div> <div class="headSearch"><i class="fa fa-search"></i><input placeholder="输入小区或商圈开始找房咯~"></div></div> <div class="classification clearfix"><ul><li class="everyClass clearfix"><div></div> <p>二手房</p></li> <li class="everyClass"><div></div> <p>新房</p></li> <li class="everyClass"><div></div> <p>租房</p></li> <li class="everyClass"><div></div> <p>卖方</p></li> <li class="everyClass"><div></div> <p>下载App</p></li> <li class="everyClass"><div></div> <p>海外</p></li> <li class="everyClass"><div></div> <p>查成交</p></li> <li class="everyClass"><div></div> <p>找小区</p></li></ul></div> <div class="banner"><img src="./首页_files/112.png"></div> <div class="tool"><h1>常用工具</h1> <ul><li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li> <li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li> <li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li> <li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li> <li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li> <li class="everyTool"><div><i class="fa fa-search fa-5x"></i></div> <p>111</p></li></ul></div> <div class="recommend"><h1>推荐房源</h1> <div class="house clearfix"><div class="housePic"><img src="./首页_files/113.jpg"></div> <div class="houseIntroduce"><p>双卧朝南三居，满五年业主家庭一套住房，双阳台</p> <p>3室1厅/137.12m²/西南/天通苑</p> <p><em>529万</em><span>38580元/平</span></p> <p><span>地铁</span><span>满五年</span></p></div></div> <div class="house clearfix"><div class="housePic"><img src="./首页_files/113.jpg"></div> <div class="houseIntroduce"><p>双卧朝南三居，满五年业主家庭一套住房，双阳台</p> <p>3室1厅/137.12m²/西南/天通苑</p> <p><em>529万</em><span>38580元/平</span></p> <p><span>地铁</span><span>满五年</span></p></div></div> <div class="house clearfix"><div class="housePic"><img src="./首页_files/113.jpg"></div> <div class="houseIntroduce"><p>双卧朝南三居，满五年业主家庭一套住房，双阳台</p> <p>3室1厅/137.12m²/西南/天通苑</p> <p><em>529万</em><span>38580元/平</span></p> <p><span>地铁</span><span>满五年</span></p></div></div> <div class="house clearfix"><div class="housePic"><img src="./首页_files/113.jpg"></div> <div class="houseIntroduce"><p>双卧朝南三居，满五年业主家庭一套住房，双阳台</p> <p>3室1厅/137.12m²/西南/天通苑</p> <p><em>529万</em><span>38580元/平</span></p> <p><span>地铁</span><span>满五年</span></p></div></div></div> <div class="bottom"><div class="bottomHead">121212</div> <div class="bottomContent"><p><span>链接分站</span><span>热门城市</span></p> <ul><li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li> <li>北京链家</li></ul></div> <div class="bottomfoot"><p>北京链家房地产经纪有限公司</p> <p>网络经营许可证 京ICP备11024601号-12</p></div></div> <div class="chooseCity"><div class="choose clearfix"><i class="fa fa-search">返回</i>选择城市</div> <p class="thiscity">当前城市</p> <div class="thisCity">北京</div> <p class="allCity">所有城市</p> <div class="city"><ul><li>北京</li> <li>北京</li> <li>北京</li> <li>北京</li> <li>北京</li> <li>北京</li> <li>北京</li></ul></div></div></div>
+<script type="text/javascript">
+	var vm = new Vue({
+    	el:".index",
+    	data:{
+    		phone:"",
+    		name:"",
+    		password:""
+    	},
+    	methods:{
+    		button:function(){
+    			var user_id=localStorage.getItem("user_id")
+    			var phone = $("input[name='phone']").val();
+    			var name = $("input[name='name']").val();
+    			var password = $("input[name='password']").val();
+    			$.ajax({
+					url:"http://lianjia.cn/index.php/home/user/reg",
+					data:{
+						user_id:user_id,
+					},
+					type:"post",
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+						// location.href="login.html"
+					}.bind(this)
+				})
+    		},
+    		request:function(index){
+			}
+    	},
+    	mounted(){
+    		this.request()
+    	}
+    })
+</script>
+
+	
+</body></html>

@@ -1,0 +1,26 @@
+// var index = new Vue({
+// 	el:".index",
+// 	data:{},
+// 	methods:{
+// 		getInterface:function(){
+// 			$.ajax({
+// 				url:"http://lianjia.cn/index.php/home/index/index",
+// 				type:"post",
+// 				data:{},
+// 				dataType:"json",
+// 				success:function(res){
+// 					console.log(res)
+// 				}
+// 			})
+// 		},
+// 		choose:function(){
+// 			$(".chooseCity").css({"display":"block"})
+// 		},
+// 		goback:function(){
+// 			$(".chooseCity").css({"display":"none"})
+// 		}
+// 	},
+// 	mounted:function(){
+// 		this.getInterface();
+// 	}
+// })

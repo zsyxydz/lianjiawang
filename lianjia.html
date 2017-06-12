@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>新房</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="./css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/lianjia.css">
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="all">
+	<div class="head">
+		<span class="back"><i class="fa fa-angle-left"></i></span><span class="city">{{citty}}<i class="fa fa-angle-down"></i></span><span class="new_house"></span><span class="people"><i class="fa fa-bus"></i></span>
+	</div>
+	<div class="bg_img">
+		<div class="word"></div>
+		<input type="text" placeholder="输入楼盘或区域开始找房咯~">
+	</div>
+	<div class="ad">
+		<img src="./images/ad.jpg">
+	</div>
+	<div class="all_list">
+		<p class="list_head">推荐楼盘</p>
+		<ul>
+			<li v-for="item in list" v-for="a in item">
+				<a href="">
+					<div class="house_img"><img :src="item.img"></div>
+					<div class="content clearfix">
+						<p>{{item.title}}</p>
+						<p>{{item.content}}</p>
+						<p class="money clearfix"><span>{{item.price}}</span><span>{{item.unit_pric}}</span></p>
+						<p class="house"><span>在售</span><span>住宅</span></p>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<p class="more"><a>查看更多</a></p>
+	</div>
+	<div class="footer">
+		<p class="footer1"><a href="">链家网北京站<i class="fa fa-angle-right"></i></a><a href="">北京新房</a></p>
+		<p><span></span><span></span></p>
+	</div>
+</div>
+ <script type="text/javascript">
+	    var vm = new Vue({
+	    	el:".all",
+	    	data:{
+	    		list:[],
+	    		citty:"",
+	    		city_id:""
+	    	},
+	    	methods:{
+	    		getQueryStr:function(key) {
+				    var queryString = location.search.match(new RegExp("[\?\&]" + key + "=([^\&]*)(\&?)", "i")),
+				        val = (queryString && queryString.length > 1 && queryString[1]) || "";
+				    return decodeURIComponent(val);
+				},
+	    		request:function(index){
+    				// var id = this.getQueryStr("id");
+    				// console.log(city_id)	
+    				this.citty=localStorage.getItem("name"),
+    				this.city_id=localStorage.getItem("id");
+    				var asd=this.city_id
+    				console.log(asd)	
+	    			$.ajax({
+						url:"http://118.89.169.233/lianjia/index.php",
+						data:{
+							area_id:asd
+						},
+						type:"post",
+						dataType:"json",
+						success:function(res){
+							console.log(res);
+							this.list=res.houses
+							console.log(this.list)
+							// location.href="login.html"
+						}.bind(this)
+					})
+				},
+		    },
+	    	mounted(){
+	    		this.request();
+	    	}
+	    })
+    </script>
+</body>
+</html>

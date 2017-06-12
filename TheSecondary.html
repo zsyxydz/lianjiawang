@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="./css/font-awesome.min.css">	
+	<link rel="stylesheet" href="./css/TheSecondary.css">
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="./js/jquery.js"></script>
+	<title>二手房</title>
+</head>
+<body>
+	<div class="index">
+		<div class="header clearfix">
+			<div class="left">
+				<i class="fa fa-angle-left angle_left"></i>
+				<a href="" class="Place_btn">北京 <i class="fa fa-angle-down angle_down"></i></a>
+			</div>
+			<a href="" class="center">
+				<span class="logo"></span>
+			</a>
+			<a href="" class="right">
+				<i class="fa fa-user"></i>
+			</a>
+		</div>
+		<div class="content_area">
+			<div class="search_box">
+				<i class="fa fa-search" class="search"></i>
+				<input type="text" class="input" placeholder="请输入小区或商圈名称">
+			</div>
+		</div>
+		<div class="list">
+			<ul>
+				<li>
+					区域 <i class="fa fa-sort-down"></i>
+				</li>
+				<li>
+					价格 <i class="fa fa-sort-down"></i>
+				</li>
+				<li>
+					房型 <i class="fa fa-sort-down"></i>
+				</li>
+				<li>
+					更多 <i class="fa fa-sort-down"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="recommend">
+			<h1>推荐房源</h1>
+			<div class="house clearfix" v-for="item in list.houses">
+				<a :href="'details.html?id='+item.id" class="house_c">
+					<div class="housePic"><img src="./images/113.jpg"></div>
+					<div class="houseIntroduce">
+						<p>{{item.title}}</p>
+						<p>{{item.content}}</p>
+						<p><em>{{item.price}}</em><span>{{item.unit_pric}}</span></p>
+						<p><span>地铁</span><span>满五年</span></p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="bottomHead">121212</div>
+			<div class="bottomContent">
+				<p><span>链接分站</span><span>热门城市</span></p>
+				<ul>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+					<li>北京链家</li>
+				</ul>
+			</div>
+			<div class="bottomfoot">
+				<p>北京链家房地产经纪有限公司</p>
+				<p>网络经营许可证 京ICP备11024601号-12</p>
+			</div>
+		</div>
+		<div class="app">
+			<div class="appBox clearfix">
+				<div class="appIcon"><img src="./images/img.png"></div>
+				<div class="appWord">
+					<p>下载链家app</p>
+					<p>查看更多北京精选二手房</p>
+				</div>
+				<div class="appDown">点击下载</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+var vm = new Vue({
+    	el:".index",
+    	data:{
+    		phone:"",
+    		name:"",
+    		password:"",
+    		list:[],
+    		logo:[],
+    		img:"",
+    		img2:"",
+    		img3:""
+    	},
+    	methods:{
+    		button:function(){
+    		},
+    		request:function(index){
+    			$.ajax({
+					url:"http://118.89.169.233/lianjia/index.php",
+					data:{
+					},
+					type:"post",
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+						this.list=res
+						// location.href="login.html"
+					}.bind(this)
+				})
+			}
+    	},
+    	mounted(){
+    		this.request()
+    	}
+    })
+</script>
+</body>
+</html>
